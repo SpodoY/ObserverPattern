@@ -6,9 +6,7 @@ import java.util.List;
 
 class WeatherData {
     private List<Observer> observers;
-    private float temperature;
-    private float humidity;
-    private float pressure;
+    WeatherDataDTO weatherData;
 
     public WeatherData() {
         observers = new ArrayList<>();
@@ -23,11 +21,13 @@ class WeatherData {
     }
 
     // TODO: Add method for notifying observers, calling the update method for all observers in the list
+    public void notifyObservers() {
+        observers.forEach(o -> o.update(weatherData));
+    }
 
-    public void setMeasurements(float temperature, float humidity, float pressure) {
-        this.temperature = temperature;
-        this.humidity = humidity;
-        this.pressure = pressure;
+    public void setMeasurements(WeatherDataDTO newWeatherData) {
+        weatherData = newWeatherData;
         // TODO: Create a method that calls your new notification method and call it here, after updating the measurements
+        notifyObservers();
     }
 }

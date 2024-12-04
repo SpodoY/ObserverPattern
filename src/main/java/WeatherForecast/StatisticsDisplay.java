@@ -15,16 +15,16 @@ class StatisticsDisplay implements Observer, DisplayElement {
         weatherData.registerObserver(this);
     }
 
-    public void update(float temp, float humidity, float pressure) {
-        tempSum += temp;
+    public void update(WeatherDataDTO weatherData) {
+        tempSum += weatherData.temperature;
         numReadings++;
 
-        if (temp > maxTemp) {
-            maxTemp = temp;
+        if (weatherData.temperature > maxTemp) {
+            maxTemp = weatherData.temperature;
         }
 
-        if (temp < minTemp) {
-            minTemp = temp;
+        if (weatherData.temperature < minTemp) {
+            minTemp = weatherData.temperature;
         }
 
         display();
