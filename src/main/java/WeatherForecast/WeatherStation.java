@@ -19,7 +19,7 @@ public class WeatherStation {
             var humi = (float)data.hourly.relative_humidity_2m.get(0);
             var pressure = (float)data.elevation;
             weatherData.setMeasurements(new WeatherDataDTO(temp, humi, pressure, "Vienna"));
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         }
     }
 }
